@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)file:///C:/Users/gabri/Downloads/plano_implementacao_30_60_90_dark_5.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Implementação — Creativity Ops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./plano_files/css2" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #242424;
+            --bg-tertiary: #2e2e2e;
+            --bg-hover: #323232;
+            --accent: #c9a96e;
+            --accent-hover: #d4b57f;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --text-muted: #8a8a8a;
+            --border: #3a3a3a;
+            --border-light: #2e2e2e;
+        }
+        
+        body {
+            font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+        
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .logo-container img {
+            height: 48px;
+        }
+        
+        .header-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .header-title h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+        
+        .header-title p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        /* Navigation */
+        .nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+        
+        .nav::-webkit-scrollbar {
+            height: 0;
+        }
+        
+        .nav-item {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            outline: none;
+        }
+        
+        .nav-item:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+        
+        .nav-item.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Header */
+        .section-header {
+            margin-bottom: 32px;
+        }
+        
+        .section-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+        
+        .section-header p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        /* Card */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        
+        .card:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .card-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .card-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        /* Card Section */
+        .card-section {
+            margin-bottom: 24px;
+        }
+        
+        .card-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .card-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        
+        /* List */
+        .list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 12px;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: all 0.15s ease;
+        }
+        
+        .list-item:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+        
+        .list-item::before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        
+        .list-item strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(201, 169, 110, 0.08);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+        
+        .highlight-box .card-section-title {
+            color: var(--accent);
+        }
+        
+        /* Result Box */
+        .result-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        
+        .result-box h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .result-box .list-item::before {
+            content: "✓";
+            width: auto;
+            height: auto;
+            background: none;
+            color: var(--accent);
+            font-weight: 700;
+            margin-top: 2px;
+        }
+        
+        /* Table */
+        .table-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+        
+        td {
+            padding: 16px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tbody tr:hover {
+            background: var(--bg-tertiary);
+        }
+        
+        td strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+        }
+        
+        .metric-card h4 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        
+        .metric-card .list-item {
+            padding: 12px 0;
+            background: transparent;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .metric-card .list-item:hover {
+            background: transparent;
+        }
+        
+        .metric-card .list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-card .list-item::before {
+            display: none;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        
+        .info-box h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 24px;
+            }
+            
+            .nav {
+                padding: 0 24px;
+            }
+            
+            .main {
+                padding: 24px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.content-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.dataset.section;
+                    
+                    // Update nav
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update sections
+                    sections.forEach(section => section.classList.remove('active'));
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="./plano_files/debettilogo.png" alt="deBetti">
+        </div>
+        <div class="header-title">
+            <h1>Plano de Implementação — Creativity Ops</h1>
+            <p>30/60/90 dias</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-item active" data-section="month-1">Mês 1</button>
+        <button class="nav-item" data-section="month-2">Mês 2</button>
+        <button class="nav-item" data-section="month-3">Mês 3</button>
+        <button class="nav-item" data-section="summary">Resumo</button>
+        <button class="nav-item" data-section="metrics">Métricas</button>
+        <button class="nav-item" data-section="cadence">Cadência</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        
+        <!-- Mês 1 -->
+        <div id="month-1" class="content-section active">
+            <div class="section-header">
+                <h2>Mês 1: Baseline + Quick Wins</h2>
+                <p>Fundação do sistema e primeiras vitórias rápidas</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semana 1-2: Onboarding e Diagnóstico</h3>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Entregáveis</div>
+                        <ul class="list">
+                            <li class="list-item">Kickoff meeting completo</li>
+                            <li class="list-item">Auditoria de assets existentes</li>
+                            <li class="list-item">Mapeamento pontos de contato críticos</li>
+                            <li class="list-item">Definição de governança (fila, SLA, reuniões)</li>
+                            <li class="list-item">Workspace Notion configurado</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="card-section-title">Decisões Necessárias (Cliente)</div>
+                        <ul class="list">
+                            <li class="list-item">Qual negócio priorizar primeiro</li>
+                            <li class="list-item">Validação tom de voz</li>
+                            <li class="list-item">Definição de aprovadores</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semana 3-4: Baseline Foundation</h3>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Sistema Visual Base</div>
+                        <ul class="list">
+                            <li class="list-item">Paleta de cores aplicada</li>
+                            <li class="list-item">Tipografia hierarquizada</li>
+                            <li class="list-item">Grid/templates: Instagram, email, impressos</li>
+                            <li class="list-item">Biblioteca ícones educativos</li>
+                            <li class="list-item">Pattern gráfico reutilizável</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Sistema Verbal Base</div>
+                        <ul class="list">
+                            <li class="list-item">Tom de voz documentado</li>
+                            <li class="list-item">Templates resposta (Google, Instagram, WhatsApp)</li>
+                            <li class="list-item">Copy educativo padrão</li>
+                            <li class="list-item">Glossário de termos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Quick Wins (Alta Visibilidade)</div>
+                        <ul class="list">
+                            <li class="list-item"><strong>Google Maps:</strong> 5 respostas + descrição otimizada</li>
+                            <li class="list-item"><strong>WhatsApp:</strong> Perfil + capa + mensagens automáticas</li>
+                            <li class="list-item"><strong>Instagram:</strong> 6 capas Highlights novas</li>
+                            <li class="list-item"><strong>Email:</strong> Template confirmação pedido</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <h4>Resultado Mês 1</h4>
+                <ul class="list">
+                    <li class="list-item">Sistema base documentado e aprovado</li>
+                    <li class="list-item">Governança funcionando</li>
+                    <li class="list-item">4 pontos de contato otimizados</li>
+                    <li class="list-item">Cliente vê diferença tangível</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mês 2 -->
+        <div id="month-2" class="content-section">
+            <div class="section-header">
+                <h2>Mês 2: Produção Escalonada</h2>
+                <p>E-commerce premium e experiência física do restaurante</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semana 5-6: E-commerce (Prioridade ROI)</h3>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Embalagem Premium</div>
+                        <ul class="list">
+                            <li class="list-item">Bag térmica redesenhada (selo 1880)</li>
+                            <li class="list-item">3 cards informativos</li>
+                            <li class="list-item">Etiquetas educativas</li>
+                            <li class="list-item">Selo "Desde 1880"</li>
+                            <li class="list-item">QR codes (receitas + fidelidade)</li>
+                            <li class="list-item">Carta agradecimento</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Site E-commerce</div>
+                        <ul class="list">
+                            <li class="list-item">Hero homepage (foco tradição)</li>
+                            <li class="list-item">Página "Sobre" com timeline 1880-2025</li>
+                            <li class="list-item">Fichas produto educativas</li>
+                            <li class="list-item">Banner cross-sell restaurante</li>
+                            <li class="list-item">3 posts blog educativos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Digital Recorrente</div>
+                        <ul class="list">
+                            <li class="list-item">8 posts Instagram feed</li>
+                            <li class="list-item">12 stories templates</li>
+                            <li class="list-item">4 carrosséis educativos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semana 7-8: Restaurante (Experiência Física)</h3>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Papelaria Mesa</div>
+                        <ul class="list">
+                            <li class="list-item">Cardápio redesenhado</li>
+                            <li class="list-item">Menu vinhos/bebidas</li>
+                            <li class="list-item">3 cards mesa educativos</li>
+                            <li class="list-item">Papel vegetal com pattern</li>
+                            <li class="list-item">Comanda com QR codes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Sinalização Interna</div>
+                        <ul class="list">
+                            <li class="list-item">3 quadros parede (história + educação)</li>
+                            <li class="list-item">Totem entrada</li>
+                            <li class="list-item">Adesivo saída</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Embalagem Take-away</div>
+                        <ul class="list">
+                            <li class="list-item">Sacola kraft branded</li>
+                            <li class="list-item">Embalagens hambúrguer/marmita</li>
+                            <li class="list-item">Guardanapo com pattern</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <h4>Resultado Mês 2</h4>
+                <ul class="list">
+                    <li class="list-item">E-commerce com embalagem premium</li>
+                    <li class="list-item">Site educando e cross-selling</li>
+                    <li class="list-item">Restaurante comunicando tradição</li>
+                    <li class="list-item">Produção digital recorrente</li>
+                    <li class="list-item">25+ pontos de contato otimizados</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mês 3 -->
+        <div id="month-3" class="content-section">
+            <div class="section-header">
+                <h2>Mês 3: Calibração + Escala</h2>
+                <p>Açougue, pós-experiência e otimização contínua</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semana 9-10: Açougue + Pós-experiência</h3>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Açougue Físico</div>
+                        <ul class="list">
+                            <li class="list-item">Etiquetas educativas</li>
+                            <li class="list-item">3 cartazes internos</li>
+                            <li class="list-item">Papel kraft personalizado</li>
+                            <li class="list-item">Flyer cross-sell</li>
+                            <li class="list-item">Sacola papel branded</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Pós-experiência</div>
+                        <ul class="list">
+                            <li class="list-item">Template newsletter mensal</li>
+                            <li class="list-item">Email "Sentimos sua falta"</li>
+                            <li class="list-item">Email aniversário</li>
+                            <li class="list-item">3 templates WhatsApp follow-up</li>
+                            <li class="list-item">Design programa fidelidade</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Google Maps Sistemático</div>
+                        <ul class="list">
+                            <li class="list-item">Responder 100% reviews backlog</li>
+                            <li class="list-item">Protocolo 48h</li>
+                            <li class="list-item">Curadoria fotos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Semana 11-12: Otimização e Aprendizado</h3>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Análise Performance</div>
+                        <ul class="list">
+                            <li class="list-item">Relatório engagement/conversão</li>
+                            <li class="list-item">Ajustes baseados em feedback</li>
+                            <li class="list-item">A/B tests</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Biblioteca de Assets</div>
+                        <ul class="list">
+                            <li class="list-item">Organização Notion completa</li>
+                            <li class="list-item">Histórico aprovações</li>
+                            <li class="list-item">Guia de reuso</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Produção Contínua Calibrada</div>
+                        <ul class="list">
+                            <li class="list-item">12 posts Instagram</li>
+                            <li class="list-item">16 stories</li>
+                            <li class="list-item">2 Reels (processo + tour)</li>
+                            <li class="list-item">4 emails marketing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-section">
+                        <div class="card-section-title">Documentação SOO</div>
+                        <ul class="list">
+                            <li class="list-item">Manual operacional completo</li>
+                            <li class="list-item">SLA real documentado</li>
+                            <li class="list-item">Playbook de padrões</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <h4>Resultado Mês 3</h4>
+                <ul class="list">
+                    <li class="list-item">Sistema operacional completo</li>
+                    <li class="list-item">3 negócios conectados</li>
+                    <li class="list-item">Pós-experiência ativado</li>
+                    <li class="list-item">Aprendizado capturado</li>
+                    <li class="list-item">Produção fluindo sem atrito</li>
+                    <li class="list-item">80+ pontos de contato otimizados</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Resumo -->
+        <div id="summary" class="content-section">
+            <div class="section-header">
+                <h2>Resumo Executivo 90 Dias</h2>
+                <p>Visão consolidada dos três meses de implementação</p>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fase</th>
+                            <th>Foco</th>
+                            <th>Output</th>
+                            <th>Impacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mês 1</strong></td>
+                            <td>Baseline + Quick Wins</td>
+                            <td>Sistema base + 4 pontos críticos</td>
+                            <td>Cliente vê mudança imediata</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mês 2</strong></td>
+                            <td>E-commerce + Restaurante</td>
+                            <td>Embalagem + site + papelaria</td>
+                            <td>ROI começa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mês 3</strong></td>
+                            <td>Açougue + Pós-exp + Escala</td>
+                            <td>Todos conectados + retenção</td>
+                            <td>Sistema autossustentável</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Métricas -->
+        <div id="metrics" class="content-section">
+            <div class="section-header">
+                <h2>Métricas de Sucesso</h2>
+                <p>Indicadores operacionais, de negócio e qualitativos após 90 dias</p>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Operacionais</h4>
+                    <ul class="list">
+                        <li class="list-item">80+ pontos de contato otimizados</li>
+                        <li class="list-item">100% reviews Google respondidos</li>
+                        <li class="list-item">SLA cumprido 90%+</li>
+                        <li class="list-item">36+ posts, 48+ stories, 4+ Reels</li>
+                        <li class="list-item">12+ emails enviados</li>
+                    </ul>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Negócio (Esperado)</h4>
+                    <ul class="list">
+                        <li class="list-item">Ticket médio e-commerce: <strong>+15-25%</strong></li>
+                        <li class="list-item">Cross-sell restaurante → online: <strong>10-15%</strong></li>
+                        <li class="list-item">Cross-sell online → restaurante: <strong>5-10%</strong></li>
+                        <li class="list-item">Reviews Google: <strong>+20%</strong></li>
+                        <li class="list-item">Tempo no site: <strong>+30%</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Qualitativo</h4>
+                    <ul class="list">
+                        <li class="list-item">UGC mencionando "145 anos": <strong>10% → 40%+</strong></li>
+                        <li class="list-item">UGC mencionando "dry aged": <strong>0% → 25%+</strong></li>
+                        <li class="list-item">Perguntas repetitivas: <strong>-50%</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cadência -->
+        <div id="cadence" class="content-section">
+            <div class="section-header">
+                <h2>Cadência Pós-90 Dias</h2>
+                <p>Modelo operacional contínuo a partir do mês 4</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>Produção Contínua</h3>
+                <div class="info-grid">
+                    <div>
+                        <div class="card-section-title">Produção Mensal</div>
+                        <ul class="list">
+                            <li class="list-item">12-16 posts Instagram</li>
+                            <li class="list-item">20-24 stories</li>
+                            <li class="list-item">2-4 Reels</li>
+                            <li class="list-item">4 emails marketing</li>
+                            <li class="list-item">Materiais sazonais</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <div class="card-section-title">Governança</div>
+                        <ul class="list">
+                            <li class="list-item">Reunião semanal: 1h</li>
+                            <li class="list-item">Fila ativa: máx 3 itens</li>
+                            <li class="list-item">SLA mantido</li>
+                            <li class="list-item">Aprendizado documentado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <h4>Resultado</h4>
+                <ul class="list">
+                    <li class="list-item">deBetti opera com sistema criativo autossustentável, consistente e escalável</li>
+                    <li class="list-item">Crescimento sem perda de qualidade</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>
