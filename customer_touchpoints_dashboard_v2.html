@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Pontos de Contato</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background-primary: #ffffff;
+            --color-background-secondary: #fafaf8;
+            --color-background-highlight: #fdf6e3;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-text-highlight: #b8860b;
+            --color-border-tertiary: rgba(0, 0, 0, 0.08);
+            --color-border-secondary: rgba(0, 0, 0, 0.15);
+            --color-border-highlight: #daa520;
+            --border-radius-sm: 6px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 14px;
+            --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background-primary: #1a1a1a;
+                --color-background-secondary: #242424;
+                --color-background-highlight: #3d3417;
+                --color-text-primary: #f5f5f5;
+                --color-text-secondary: #a0a0a0;
+                --color-text-tertiary: #707070;
+                --color-text-highlight: #daa520;
+                --color-border-tertiary: rgba(255, 255, 255, 0.08);
+                --color-border-secondary: rgba(255, 255, 255, 0.15);
+                --color-border-highlight: #b8860b;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-background-secondary);
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .top-bar {
+            background: var(--color-background-primary);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem 2.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border-tertiary);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .main-counter {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+        
+        .total-count {
+            font-size: 72px;
+            font-weight: 600;
+            color: var(--color-text-highlight);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .total-label {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 500;
+            max-width: 120px;
+            line-height: 1.3;
+        }
+        
+        .mini-stats {
+            display: flex;
+            gap: 2.5rem;
+            padding-left: 2.5rem;
+            border-left: 1px solid var(--color-border-tertiary);
+        }
+        
+        .mini-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .mini-stat-number {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .mini-stat-label {
+            font-size: 11px;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 500;
+        }
+        
+        .filter-pills {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            padding: 10px 22px;
+            border-radius: 24px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid var(--color-border-secondary);
+            color: var(--color-text-primary);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .filter-btn:hover {
+            background: var(--color-background-secondary);
+            transform: translateY(-1px);
+        }
+        
+        .filter-btn.active {
+            background: var(--color-background-highlight);
+            color: var(--color-text-highlight);
+            border-color: var(--color-border-highlight);
+        }
+        
+        .stages-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .stage-card {
+            background: var(--color-background-primary);
+            border: 1px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        
+        .stage-card:hover {
+            border-color: var(--color-border-secondary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stage-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.75rem;
+            background: var(--color-background-secondary);
+            border-bottom: 1px solid var(--color-border-tertiary);
+        }
+        
+        .stage-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .stage-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+        
+        .stage-count {
+            background: var(--color-background-highlight);
+            color: var(--color-text-highlight);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 16px;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .touchpoints-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 0;
+            padding: 0.5rem;
+        }
+        
+        .touchpoint {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--color-text-primary);
+            transition: all 0.15s ease;
+            border-radius: var(--border-radius-sm);
+            margin: 2px;
+        }
+        
+        .touchpoint:hover {
+            background: var(--color-background-secondary);
+        }
+        
+        .touchpoint-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .touchpoint-name {
+            flex: 1;
+            line-height: 1.4;
+        }
+        
+        .touchpoint-channel {
+            font-size: 11px;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+        
+        .touchpoint:hover .touchpoint-channel {
+            opacity: 1;
+        }
+        
+        @media (max-width: 1200px) {
+            .top-bar {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .mini-stats {
+                padding-left: 0;
+                border-left: none;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--color-border-tertiary);
+            }
+            
+            .filter-pills {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .top-bar {
+                padding: 1.5rem;
+            }
+            
+            .total-count {
+                font-size: 56px;
+            }
+            
+            .mini-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            
+            .touchpoints-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stage-header {
+                padding: 1rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="main-counter">
+                <div class="total-count" id="totalCount">0</div>
+                <div class="total-label">pontos de contato mapeados</div>
+            </div>
+            
+            <div class="mini-stats">
+                <div class="mini-stat">
+                    <div class="mini-stat-number" id="digitalCount">0</div>
+                    <div class="mini-stat-label">Digital</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-number" id="fisicoCount">0</div>
+                    <div class="mini-stat-label">Físico</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-number" id="stageCount">0</div>
+                    <div class="mini-stat-label">Estágios</div>
+                </div>
+            </div>
+            
+            <div class="filter-pills">
+                <button class="filter-btn active" data-channel="all">Todos</button>
+                <button class="filter-btn" data-channel="digital">Digital</button>
+                <button class="filter-btn" data-channel="fisico">Físico</button>
+            </div>
+        </div>
+        
+        <div class="stages-grid" id="stagesContainer"></div>
+    </div>
+
+    <script>
+        const touchpointsData = {
+            "Descoberta": [
+                { name: "Google Maps - Respostas reviews", channel: "digital", icon: "⭐" },
+                { name: "Google Maps - Foto de capa", channel: "digital", icon: "📸" },
+                { name: "Google Maps - Galeria fotos", channel: "digital", icon: "🖼️" },
+                { name: "Google Maps - Descrição completa", channel: "digital", icon: "📝" },
+                { name: "Google Maps - Posts/atualizações", channel: "digital", icon: "📢" },
+                { name: "Busca Google - Meta descriptions", channel: "digital", icon: "🔍" },
+                { name: "Busca Google - Featured snippets", channel: "digital", icon: "✨" },
+                { name: "Busca IA - Conteúdo indexação", channel: "digital", icon: "🤖" },
+                { name: "Instagram Feed - Posts grid", channel: "digital", icon: "📱" },
+                { name: "Instagram Stories - Templates", channel: "digital", icon: "📲" },
+                { name: "Instagram Reels - Branding", channel: "digital", icon: "🎬" },
+                { name: "Instagram Bio - Link tree", channel: "digital", icon: "🔗" },
+                { name: "TikTok - Vídeos overlay marca", channel: "digital", icon: "🎵" },
+                { name: "TikTok - Bio profile", channel: "digital", icon: "👤" },
+                { name: "Facebook - Cover + profile", channel: "digital", icon: "👥" },
+                { name: "Facebook - Sobre/Informações", channel: "digital", icon: "ℹ️" },
+                { name: "YouTube - Channel art", channel: "digital", icon: "📺" },
+                { name: "LinkedIn - Company page", channel: "digital", icon: "💼" },
+                { name: "Meta Ads - Criativos feed", channel: "digital", icon: "📊" },
+                { name: "Meta Ads - Stories", channel: "digital", icon: "📱" },
+                { name: "Meta Ads - Reels", channel: "digital", icon: "🎥" },
+                { name: "Google Ads - Display banners", channel: "digital", icon: "🖼️" },
+                { name: "Google Ads - Search ads", channel: "digital", icon: "🔎" },
+                { name: "Outdoor/OOH - Sinalização", channel: "fisico", icon: "🪧" },
+                { name: "Parcerias - Kit imprensa", channel: "digital", icon: "📰" },
+                { name: "Parcerias - Brand guidelines", channel: "digital", icon: "📋" },
+                { name: "Cartões de visita", channel: "fisico", icon: "💳" },
+                { name: "Cards 'Indique um amigo'", channel: "fisico", icon: "🤝" }
+            ],
+            "Consideração": [
+                { name: "Site - Homepage hero", channel: "digital", icon: "🏠" },
+                { name: "Site - Seções conteúdo", channel: "digital", icon: "📄" },
+                { name: "Site - CTAs principais", channel: "digital", icon: "👆" },
+                { name: "Site - Página Sobre", channel: "digital", icon: "📖" },
+                { name: "Site - Timeline 1880-2025", channel: "digital", icon: "⏳" },
+                { name: "Site - Fotos família/equipe", channel: "digital", icon: "👨‍👩‍👧" },
+                { name: "Site - Produtos Dry Aged", channel: "digital", icon: "🥩" },
+                { name: "Site - Fichas produto", channel: "digital", icon: "📑" },
+                { name: "Site - Galeria produtos", channel: "digital", icon: "🖼️" },
+                { name: "Site - Ícones educativos", channel: "digital", icon: "🎓" },
+                { name: "Site - Badges qualidade", channel: "digital", icon: "🏆" },
+                { name: "Site - Landing restaurante", channel: "digital", icon: "🍽️" },
+                { name: "Site - Galeria ambiente", channel: "digital", icon: "📸" },
+                { name: "Site - Menu digital", channel: "digital", icon: "📋" },
+                { name: "Site - Blog posts", channel: "digital", icon: "✍️" },
+                { name: "Site - Featured images", channel: "digital", icon: "🖼️" },
+                { name: "Site - Infográficos", channel: "digital", icon: "📊" },
+                { name: "Site - FAQ", channel: "digital", icon: "❓" },
+                { name: "Site - Contato + mapa", channel: "digital", icon: "📍" },
+                { name: "Instagram - Carrossel educativo", channel: "digital", icon: "📚" },
+                { name: "Instagram - Posts produto", channel: "digital", icon: "🥩" },
+                { name: "Instagram - Posts bastidores", channel: "digital", icon: "🎬" },
+                { name: "Instagram - UGC curado", channel: "digital", icon: "👥" },
+                { name: "Instagram - Posts eventos", channel: "digital", icon: "🎉" },
+                { name: "Instagram Stories - Processo", channel: "digital", icon: "⚙️" },
+                { name: "Instagram Stories - Produto", channel: "digital", icon: "🛍️" },
+                { name: "Instagram Stories - Promoção", channel: "digital", icon: "🎁" },
+                { name: "Instagram Stories - Enquetes", channel: "digital", icon: "📊" },
+                { name: "Instagram Highlights - Cardápio", channel: "digital", icon: "📖" },
+                { name: "Instagram Highlights - Dry Aged", channel: "digital", icon: "🥩" },
+                { name: "Instagram Highlights - História", channel: "digital", icon: "📜" },
+                { name: "Instagram Highlights - Delivery", channel: "digital", icon: "🚗" },
+                { name: "Instagram Highlights - Restaurante", channel: "digital", icon: "🍴" },
+                { name: "Instagram Highlights - Açougue", channel: "digital", icon: "🔪" },
+                { name: "Instagram Highlights - Clientes", channel: "digital", icon: "💬" },
+                { name: "Instagram - Templates resposta", channel: "digital", icon: "💭" },
+                { name: "Instagram DM - Respostas rápidas", channel: "digital", icon: "⚡" },
+                { name: "iFood/Rappi - Banner header", channel: "digital", icon: "🍔" },
+                { name: "iFood/Rappi - Fotos produtos", channel: "digital", icon: "📷" },
+                { name: "iFood/Rappi - Descrições", channel: "digital", icon: "📝" },
+                { name: "iFood/Rappi - Categorias", channel: "digital", icon: "🗂️" },
+                { name: "Email - Template newsletter", channel: "digital", icon: "📧" },
+                { name: "Email - Header/footer", channel: "digital", icon: "📨" },
+                { name: "Email - Banners promocionais", channel: "digital", icon: "🎯" },
+                { name: "YouTube - Vídeos educativos", channel: "digital", icon: "🎥" },
+                { name: "YouTube - Tour virtual", channel: "digital", icon: "🏛️" },
+                { name: "YouTube - Processo dry aged", channel: "digital", icon: "📹" }
+            ],
+            "Decisão": [
+                { name: "WhatsApp - Foto perfil", channel: "digital", icon: "👤" },
+                { name: "WhatsApp - Foto capa", channel: "digital", icon: "🖼️" },
+                { name: "WhatsApp - Catálogo produtos", channel: "digital", icon: "📖" },
+                { name: "WhatsApp - Descrição negócio", channel: "digital", icon: "📝" },
+                { name: "WhatsApp - Mensagem boas-vindas", channel: "digital", icon: "👋" },
+                { name: "WhatsApp - Mensagem ausência", channel: "digital", icon: "🕐" },
+                { name: "WhatsApp - Respostas rápidas", channel: "digital", icon: "⚡" },
+                { name: "WhatsApp - Status/Stories", channel: "digital", icon: "📲" },
+                { name: "Email - Confirmação pedido", channel: "digital", icon: "✅" },
+                { name: "Email - Pedido enviado", channel: "digital", icon: "📦" },
+                { name: "Email - Pedido entregue", channel: "digital", icon: "🎁" },
+                { name: "Email - Reserva confirmada", channel: "digital", icon: "📅" },
+                { name: "Email - Lembrete reserva", channel: "digital", icon: "⏰" },
+                { name: "Email - Cancelamento", channel: "digital", icon: "❌" },
+                { name: "SMS - Notificações push", channel: "digital", icon: "📱" },
+                { name: "Checkout - Página carrinho", channel: "digital", icon: "🛒" },
+                { name: "Checkout - Página pagamento", channel: "digital", icon: "💳" },
+                { name: "Checkout - Página confirmação", channel: "digital", icon: "✔️" },
+                { name: "Site - Banners sazonais", channel: "digital", icon: "🎄" },
+                { name: "Site - Pop-ups primeira visita", channel: "digital", icon: "🔔" },
+                { name: "Site - Exit-intent offers", channel: "digital", icon: "🚪" }
+            ],
+            "Experiência": [
+                { name: "Restaurante - Letreiro fachada", channel: "fisico", icon: "🪧" },
+                { name: "Restaurante - Sinalização externa", channel: "fisico", icon: "👉" },
+                { name: "Restaurante - Adesivos porta", channel: "fisico", icon: "🚪" },
+                { name: "Restaurante - Quadro boas-vindas", channel: "fisico", icon: "👋" },
+                { name: "Restaurante - Display reserva", channel: "fisico", icon: "📋" },
+                { name: "Restaurante - Backdrop branded", channel: "fisico", icon: "🎨" },
+                { name: "Restaurante - Ponto espera", channel: "fisico", icon: "⏳" },
+                { name: "Restaurante - Timeline paredes", channel: "fisico", icon: "📜" },
+                { name: "Restaurante - Fotos históricas", channel: "fisico", icon: "🖼️" },
+                { name: "Restaurante - Infográfico dry aged", channel: "fisico", icon: "📊" },
+                { name: "Restaurante - Mapa cortes", channel: "fisico", icon: "🗺️" },
+                { name: "Restaurante - Certificados", channel: "fisico", icon: "🏆" },
+                { name: "Restaurante - Neon luminoso", channel: "fisico", icon: "💡" },
+                { name: "Restaurante - Cardápio principal", channel: "fisico", icon: "📖" },
+                { name: "Restaurante - Menu vinhos", channel: "fisico", icon: "🍷" },
+                { name: "Restaurante - Menu infantil", channel: "fisico", icon: "👶" },
+                { name: "Restaurante - Menu sobremesas", channel: "fisico", icon: "🍰" },
+                { name: "Restaurante - Guardanapos papel", channel: "fisico", icon: "🧻" },
+                { name: "Restaurante - Guardanapos tecido", channel: "fisico", icon: "🧺" },
+                { name: "Restaurante - Papel vegetal", channel: "fisico", icon: "📄" },
+                { name: "Restaurante - Sousplat", channel: "fisico", icon: "⭕" },
+                { name: "Restaurante - Identificador mesa", channel: "fisico", icon: "🔢" },
+                { name: "Restaurante - Totem mesa", channel: "fisico", icon: "📱" },
+                { name: "Restaurante - Card e-commerce", channel: "fisico", icon: "💻" },
+                { name: "Restaurante - Card dry aged", channel: "fisico", icon: "📋" },
+                { name: "Restaurante - Bandeirinha produtos", channel: "fisico", icon: "🚩" },
+                { name: "Restaurante - Etiqueta churrasco", channel: "fisico", icon: "🏷️" },
+                { name: "Restaurante - Pratos branded", channel: "fisico", icon: "🍽️" },
+                { name: "Restaurante - Bowls", channel: "fisico", icon: "🥣" },
+                { name: "Restaurante - Tábuas carne", channel: "fisico", icon: "🪵" },
+                { name: "Restaurante - Facas logo", channel: "fisico", icon: "🔪" },
+                { name: "Restaurante - Comanda/nota", channel: "fisico", icon: "🧾" },
+                { name: "Restaurante - Porta-comanda", channel: "fisico", icon: "📑" },
+                { name: "Restaurante - Card feedback QR", channel: "fisico", icon: "⭐" },
+                { name: "Restaurante - Card fidelidade", channel: "fisico", icon: "💳" },
+                { name: "Restaurante - Adesivo saída", channel: "fisico", icon: "👋" },
+                { name: "Restaurante - Flyer take-away", channel: "fisico", icon: "📄" },
+                { name: "Take-away - Sacola kraft", channel: "fisico", icon: "🛍️" },
+                { name: "Take-away - Embalagem marmita", channel: "fisico", icon: "📦" },
+                { name: "Take-away - Embalagem hambúrguer", channel: "fisico", icon: "🍔" },
+                { name: "Take-away - Guardanapos", channel: "fisico", icon: "🧻" },
+                { name: "Take-away - Talheres embalados", channel: "fisico", icon: "🍴" },
+                { name: "Restaurante - Espelho banheiro", channel: "fisico", icon: "🪞" },
+                { name: "Restaurante - Toalhas papel", channel: "fisico", icon: "🧻" },
+                { name: "Uniforme - Avental", channel: "fisico", icon: "👕" },
+                { name: "Uniforme - Camisetas", channel: "fisico", icon: "👔" },
+                { name: "Uniforme - Bonés/chapéus", channel: "fisico", icon: "🧢" },
+                { name: "Uniforme - Crachás", channel: "fisico", icon: "🎫" },
+                { name: "Açougue - Letreiro fachada", channel: "fisico", icon: "🪧" },
+                { name: "Açougue - Adesivos vitrine", channel: "fisico", icon: "🪟" },
+                { name: "Açougue - Display produtos", channel: "fisico", icon: "🛒" },
+                { name: "Açougue - Sinalização categorias", channel: "fisico", icon: "🗂️" },
+                { name: "Açougue - Cartazes educativos", channel: "fisico", icon: "📋" },
+                { name: "Açougue - Banner promoções", channel: "fisico", icon: "🎯" },
+                { name: "Açougue - Etiquetas produtos", channel: "fisico", icon: "🏷️" },
+                { name: "Açougue - Identificadores cortes", channel: "fisico", icon: "🔖" },
+                { name: "Açougue - Tabela preços", channel: "fisico", icon: "💰" },
+                { name: "Açougue - Papel kraft", channel: "fisico", icon: "📄" },
+                { name: "Açougue - Sacola papel", channel: "fisico", icon: "🛍️" },
+                { name: "Açougue - Etiqueta seladora", channel: "fisico", icon: "🏷️" },
+                { name: "Açougue - Adesivo 'Desde 1880'", channel: "fisico", icon: "📜" },
+                { name: "Açougue - Cupom fiscal", channel: "fisico", icon: "🧾" },
+                { name: "Açougue - Cartão visita", channel: "fisico", icon: "💳" },
+                { name: "Açougue - Flyer e-commerce", channel: "fisico", icon: "📄" },
+                { name: "E-commerce - Bag térmica", channel: "fisico", icon: "🧊" },
+                { name: "E-commerce - Caixa térmica", channel: "fisico", icon: "📦" },
+                { name: "E-commerce - Gelo branded", channel: "fisico", icon: "🧊" },
+                { name: "E-commerce - Plástico vácuo", channel: "fisico", icon: "📦" },
+                { name: "E-commerce - Bandeja plástica", channel: "fisico", icon: "📦" },
+                { name: "E-commerce - Papel manteiga", channel: "fisico", icon: "📄" },
+                { name: "E-commerce - Caixa kraft", channel: "fisico", icon: "📦" },
+                { name: "E-commerce - Etiqueta produto", channel: "fisico", icon: "🏷️" },
+                { name: "E-commerce - Etiqueta dry aged", channel: "fisico", icon: "🏷️" },
+                { name: "E-commerce - Selo 'Desde 1880'", channel: "fisico", icon: "⭐" },
+                { name: "E-commerce - Adesivo lacre", channel: "fisico", icon: "🔒" },
+                { name: "E-commerce - Card 'Como preparar'", channel: "fisico", icon: "📋" },
+                { name: "E-commerce - Card história corte", channel: "fisico", icon: "📖" },
+                { name: "E-commerce - Card restaurante", channel: "fisico", icon: "🍽️" },
+                { name: "E-commerce - Folheto catálogo", channel: "fisico", icon: "📚" },
+                { name: "E-commerce - QR receitas", channel: "fisico", icon: "📱" },
+                { name: "E-commerce - QR fidelidade", channel: "fisico", icon: "💳" },
+                { name: "E-commerce - Adesivo decorativo", channel: "fisico", icon: "🎨" },
+                { name: "E-commerce - Imã geladeira", channel: "fisico", icon: "🧲" },
+                { name: "E-commerce - Marcador ponto carne", channel: "fisico", icon: "🌡️" },
+                { name: "E-commerce - Cupom fiscal", channel: "fisico", icon: "🧾" },
+                { name: "E-commerce - Carta agradecimento", channel: "fisico", icon: "💌" }
+            ],
+            "Pós-experiência": [
+                { name: "Google Maps - Review positivo", channel: "digital", icon: "⭐" },
+                { name: "Google Maps - Review negativo", channel: "digital", icon: "😔" },
+                { name: "Google Maps - Review neutro", channel: "digital", icon: "😐" },
+                { name: "Instagram - Reshare UGC", channel: "digital", icon: "📲" },
+                { name: "Instagram - Agradecimento menção", channel: "digital", icon: "🙏" },
+                { name: "Instagram - Post compilação", channel: "digital", icon: "📸" },
+                { name: "Email - Newsletter mensal", channel: "digital", icon: "📰" },
+                { name: "Email - 'Sentimos sua falta'", channel: "digital", icon: "💔" },
+                { name: "Email - Aniversário cliente", channel: "digital", icon: "🎂" },
+                { name: "Email - Produtos novos", channel: "digital", icon: "🆕" },
+                { name: "Email - Receitas sazonais", channel: "digital", icon: "🍂" },
+                { name: "WhatsApp - Follow-up restaurante", channel: "digital", icon: "💬" },
+                { name: "WhatsApp - Follow-up e-commerce", channel: "digital", icon: "📦" },
+                { name: "WhatsApp - Pedido review", channel: "digital", icon: "⭐" },
+                { name: "WhatsApp - Ofertas exclusivas", channel: "digital", icon: "🎁" },
+                { name: "SMS - Lembrete promoção", channel: "digital", icon: "📱" },
+                { name: "Fidelidade - Cartão físico", channel: "fisico", icon: "💳" },
+                { name: "Fidelidade - Digital wallet", channel: "digital", icon: "📱" },
+                { name: "Fidelidade - Email boas-vindas", channel: "digital", icon: "👋" },
+                { name: "Fidelidade - Email pontos", channel: "digital", icon: "🎯" },
+                { name: "Pesquisa - Formulário digital", channel: "digital", icon: "📋" },
+                { name: "Pesquisa - Email resultados", channel: "digital", icon: "📊" }
+            ]
+        };
+
+        let currentFilter = "all";
+
+        function updateStats() {
+            let totalDigital = 0;
+            let totalFisico = 0;
+            
+            Object.values(touchpointsData).forEach(stage => {
+                stage.forEach(tp => {
+                    if (tp.channel === "digital") totalDigital++;
+                    if (tp.channel === "fisico") totalFisico++;
+                });
+            });
+            
+            document.getElementById("digitalCount").textContent = totalDigital;
+            document.getElementById("fisicoCount").textContent = totalFisico;
+            document.getElementById("stageCount").textContent = Object.keys(touchpointsData).length;
+        }
+
+        function renderStages() {
+            const container = document.getElementById("stagesContainer");
+            container.innerHTML = "";
+            
+            let totalTouchpoints = 0;
+            
+            Object.keys(touchpointsData).forEach(stage => {
+                const touchpoints = touchpointsData[stage];
+                const filtered = currentFilter === "all" 
+                    ? touchpoints 
+                    : touchpoints.filter(t => t.channel === currentFilter);
+                
+                if (filtered.length === 0) return;
+                
+                totalTouchpoints += filtered.length;
+                
+                const card = document.createElement("div");
+                card.className = "stage-card";
+                
+                card.innerHTML = `
+                    <div class="stage-header">
+                        <div class="stage-title">
+                            <div class="stage-name">${stage}</div>
+                            <div class="stage-count">${filtered.length}</div>
+                        </div>
+                    </div>
+                    <div class="touchpoints-grid">
+                        ${filtered.map(t => `
+                            <div class="touchpoint">
+                                <div class="touchpoint-icon">${t.icon}</div>
+                                <div class="touchpoint-name">${t.name}</div>
+                                <div class="touchpoint-channel">${t.channel}</div>
+                            </div>
+                        `).join("")}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            document.getElementById("totalCount").textContent = totalTouchpoints;
+        }
+
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentFilter = btn.dataset.channel;
+                renderStages();
+            });
+        });
+
+        updateStats();
+        renderStages();
+    </script>
+</body>
+</html>
