@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/gabri/Downloads/index_12.html -->
+<!-- saved from url=(0046)file:///C:/Users/gabri/Downloads/index_17.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,11 +49,52 @@
             z-index: 1;
             text-align: center;
             margin-bottom: 60px;
+            perspective: 1000px;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            transition: transform 0.08s ease-out;
+            transform-style: preserve-3d;
         }
 
         .main-logo {
-            height: 60px;
+            height: 250px;
             opacity: 0.9;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(
+                    circle 120px at var(--shine-x, 50%) var(--shine-y, 50%),
+                    rgba(255, 230, 150, 0.9) 0%,
+                    rgba(201, 169, 110, 0.6) 20%,
+                    rgba(201, 169, 110, 0.3) 40%,
+                    transparent 70%
+                );
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+            mix-blend-mode: screen;
+            -webkit-mask-image: url('https://raw.githubusercontent.com/oidux/experience/refs/heads/main/debettilogo.png');
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-image: url('https://raw.githubusercontent.com/oidux/experience/refs/heads/main/debettilogo.png');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
         }
         
         ::selection {
@@ -267,7 +308,7 @@
             }
 
             .main-logo {
-                height: 48px;
+                height: 80px;
             }
 
             .cards-container {
@@ -287,7 +328,9 @@
     <div class="bg-gradient"></div>
 
     <div class="logo-header">
-        <img src="https://raw.githubusercontent.com/oidux/experience/refs/heads/main/debettilogo.png" alt="deBetti" class="main-logo">
+        <div class="logo-wrapper" id="logoWrapper" style="transform: rotateX(0deg) rotateY(0deg); --shine-x: 50%; --shine-y: 50%;">
+            <img src="./index_files/debettilogo.png" alt="deBetti" class="main-logo">
+        </div>
     </div>
 
     <section class="cards-container">
@@ -337,5 +380,42 @@
         </article>
     </section>
 
+    <script>
+        const logoWrapper = document.getElementById('logoWrapper');
+
+        // Movimento 3D e brilho holográfico em toda a página
+        document.addEventListener('mousemove', (e) => {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            // Movimento 3D
+            const rotateX = ((e.clientY - centerY) / centerY) * -20;
+            const rotateY = ((e.clientX - centerX) / centerX) * 20;
+            logoWrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            // Calcular posição do brilho baseado no ângulo do mouse
+            const logoRect = logoWrapper.getBoundingClientRect();
+            const logoCenterX = logoRect.left + logoRect.width / 2;
+            const logoCenterY = logoRect.top + logoRect.height / 2;
+            
+            // Calcular o ângulo inverso (como se fosse reflexo de luz)
+            const angleX = ((e.clientX - logoCenterX) / window.innerWidth) * 100;
+            const angleY = ((e.clientY - logoCenterY) / window.innerHeight) * 100;
+            
+            // Posicionar o brilho no lado oposto ao mouse (efeito de reflexo)
+            const shineX = 50 - angleX * 0.8;
+            const shineY = 50 - angleY * 0.8;
+            
+            logoWrapper.style.setProperty('--shine-x', `${shineX}%`);
+            logoWrapper.style.setProperty('--shine-y', `${shineY}%`);
+        });
+
+        // Reset na posição quando o mouse sai da página
+        document.addEventListener('mouseleave', () => {
+            logoWrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            logoWrapper.style.setProperty('--shine-x', '50%');
+            logoWrapper.style.setProperty('--shine-y', '50%');
+        });
+    </script>
 
 </body></html>
