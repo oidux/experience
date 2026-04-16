@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0035)https://oidux.github.io/experience/ -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pontos de Contato — deBetti</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="./pontos_files/css2" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -66,6 +66,7 @@
         }
         
         .total-count {
+            font-family: 'Archivo', sans-serif;
             font-size: 32px;
             font-weight: 600;
             color: var(--accent);
@@ -73,6 +74,7 @@
         }
         
         .total-label {
+            font-family: 'Archivo', sans-serif;
             font-size: 11px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -90,6 +92,7 @@
         }
         
         .mini-stat-number {
+            font-family: 'Archivo', sans-serif;
             font-size: 20px;
             font-weight: 600;
             color: var(--text-primary);
@@ -97,6 +100,7 @@
         }
         
         .mini-stat-label {
+            font-family: 'Archivo', sans-serif;
             font-size: 10px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -131,10 +135,23 @@
             display: flex;
             gap: 24px;
             overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
         }
         
         .nav::-webkit-scrollbar {
-            height: 0;
+            height: 6px;
+        }
+        
+        .nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .nav::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
         }
         
         .filter-group {
@@ -145,6 +162,7 @@
         }
         
         .filter-label {
+            font-family: 'Archivo', sans-serif;
             font-size: 11px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -154,6 +172,7 @@
         }
         
         .filter-btn {
+            font-family: 'Archivo', sans-serif;
             padding: 6px 14px;
             border-radius: 6px;
             font-size: 13px;
@@ -162,7 +181,6 @@
             background: transparent;
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            font-family: 'Archivo';
             transition: all 0.2s;
             white-space: nowrap;
         }
@@ -194,76 +212,69 @@
         }
         
         .stage-header {
+            padding: 20px 28px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            background: var(--bg-tertiary);
-            border-bottom: 1px solid var(--border);
         }
         
         .stage-name {
-            font-size: 16px;
+            font-family: 'Archivo', sans-serif;
+            font-size: 18px;
             font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: -0.01em;
         }
         
         .stage-count {
-            background: var(--bg-primary);
-            color: var(--accent);
-            font-size: 12px;
-            font-weight: 600;
+            font-family: 'Archivo', sans-serif;
+            background: var(--accent);
+            color: var(--bg-primary);
             padding: 4px 12px;
-            border-radius: 4px;
-            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
         }
         
         .channels-container {
-            padding: 16px;
+            padding: 20px 28px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 28px;
         }
         
         .channel-group {
-            margin-bottom: 20px;
-            background: var(--bg-tertiary);
-            border-radius: 6px;
-            padding: 16px;
-            border: 1px solid var(--border-light);
-        }
-        
-        .channel-group:last-child {
-            margin-bottom: 0;
+            background: transparent;
         }
         
         .channel-header {
+            font-family: 'Archivo', sans-serif;
             font-size: 12px;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            padding-bottom: 12px;
             margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--border-light);
         }
         
         .touchpoints-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 8px;
         }
         
         .touchpoint {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 10px 14px;
-            font-size: 13px;
-            color: var(--text-primary);
-            background: var(--bg-secondary);
+            background: var(--bg-tertiary);
             border: 1px solid var(--border-light);
-            border-radius: 4px;
-            transition: all 0.15s;
+            border-radius: 6px;
+            padding: 12px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
         }
         
         .touchpoint:hover {
@@ -272,7 +283,10 @@
         }
         
         .touchpoint-name {
-            flex: 1;
+            font-family: 'Archivo', sans-serif;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 400;
         }
         
         .touchpoint-tags {
@@ -282,2781 +296,380 @@
         
         .tag {
             font-size: 14px;
-            opacity: 0.6;
+            opacity: 0.7;
         }
         
-        .touchpoint:hover .tag {
-            opacity: 1;
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
             .header {
-                padding: 16px 20px;
                 flex-wrap: wrap;
+                padding: 16px 20px;
+            }
+            
+            .mini-stats {
+                width: 100%;
+                justify-content: space-around;
             }
             
             .nav {
                 padding: 0 20px;
+                gap: 12px;
+            }
+            
+            .filter-group {
+                gap: 6px;
+                padding: 16px 0;
+            }
+            
+            .filter-label {
+                display: none;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 14px;
             }
             
             .main {
                 padding: 20px;
             }
             
-            .touchpoints-grid {
+            .channels-container {
                 grid-template-columns: 1fr;
+                padding: 16px 20px;
+            }
+            
+            .stage-header {
+                padding: 16px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="logo-container">
             <img src="https://raw.githubusercontent.com/oidux/experience/refs/heads/main/debettilogo.png" alt="deBetti">
         </div>
         
         <div class="counter-box">
-            <div class="total-count" id="totalCount">204</div>
-            <div class="total-label">Pontos de<br>contato</div>
+            <div class="total-count" id="totalCount">0</div>
+            <div class="total-label">Pontos<br>de contato</div>
         </div>
         
         <div class="mini-stats">
             <div class="mini-stat">
-                <div class="mini-stat-number" id="digitalCount">114</div>
-                <div class="mini-stat-label">Digital</div>
+                <div class="mini-stat-number" id="stagesCount">5</div>
+                <div class="mini-stat-label">Etapas</div>
             </div>
             <div class="mini-stat">
-                <div class="mini-stat-number" id="fisicoCount">90</div>
-                <div class="mini-stat-label">Físico</div>
+                <div class="mini-stat-number" id="digitalCount">0</div>
+                <div class="mini-stat-label">Visual</div>
             </div>
             <div class="mini-stat">
-                <div class="mini-stat-number">5</div>
-                <div class="mini-stat-label">Estágios</div>
+                <div class="mini-stat-number" id="fisicoCount">0</div>
+                <div class="mini-stat-label">Verbal</div>
             </div>
         </div>
         
-        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </div>
     
-    <!-- Navigation/Filters -->
     <div class="nav">
         <div class="filter-group">
-            <span class="filter-label">Estágio:</span>
-            <button class="filter-btn active" data-filter="stage" data-value="all">Todos</button>
-            <button class="filter-btn" data-filter="stage" data-value="Descoberta">Descoberta</button>
-            <button class="filter-btn" data-filter="stage" data-value="Consideração">Consideração</button>
-            <button class="filter-btn" data-filter="stage" data-value="Decisão">Decisão</button>
-            <button class="filter-btn" data-filter="stage" data-value="Experiência">Experiência</button>
-            <button class="filter-btn" data-filter="stage" data-value="Pós-experiência">Pós-exp.</button>
+            <span class="filter-label">Etapa:</span>
+            <button class="filter-btn active" data-filter="stage" data-value="all">Todas</button>
+            <button class="filter-btn" data-filter="stage" data-value="DESCOBERTA">Descoberta</button>
+            <button class="filter-btn" data-filter="stage" data-value="CONSIDERAÇÃO">Consideração</button>
+            <button class="filter-btn" data-filter="stage" data-value="DECISÃO">Decisão</button>
+            <button class="filter-btn" data-filter="stage" data-value="EXPERIÊNCIA">Experiência</button>
+            <button class="filter-btn" data-filter="stage" data-value="PÓS-EXPERIÊNCIA">Pós-experiência</button>
         </div>
         
         <div class="filter-group">
-            <span class="filter-label">Canal:</span>
-            <button class="filter-btn active" data-filter="channel" data-value="all">Todos</button>
-            <button class="filter-btn" data-filter="channel" data-value="digital">Digital</button>
-            <button class="filter-btn" data-filter="channel" data-value="fisico">Físico</button>
-        </div>
-        
-        <div class="filter-group">
-            <span class="filter-label">Aplicação:</span>
+            <span class="filter-label">Identidade:</span>
             <button class="filter-btn active" data-filter="identity" data-value="all">Todas</button>
-            <button class="filter-btn" data-filter="identity" data-value="visual">Visual</button>
-            <button class="filter-btn" data-filter="identity" data-value="verbal">Verbal</button>
-            <button class="filter-btn" data-filter="identity" data-value="both">Visual + Verbal</button>
+            <button class="filter-btn" data-filter="identity" data-value="visual">👁️ Visual</button>
+            <button class="filter-btn" data-filter="identity" data-value="verbal">🔊 Verbal</button>
+            <button class="filter-btn" data-filter="identity" data-value="both">👁️🔊 Ambas</button>
         </div>
     </div>
     
-    <!-- Main Content -->
-    <div class="main" id="stagesContainer">
-                        <div class="stage-card">
-                            <div class="stage-header">
-                                <div class="stage-name">Descoberta</div>
-                                <div class="stage-count">28</div>
-                            </div>
-                            <div class="channels-container">
-                                
-                        <div class="channel-group">
-                            <div class="channel-header">Google Maps</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Respostas reviews personalizadas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Foto de capa curada</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Galeria de fotos com narrativa</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Descrição completa do negócio</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Posts/atualizações regulares</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Busca Google</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Meta descriptions otimizadas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Featured snippets estruturados</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Busca IA (ChatGPT/Perplexity)</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Conteúdo estruturado para indexação</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Posts grid com identidade visual</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Templates stories com padrão</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Reels com branding consistente</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Link tree organizado</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">TikTok</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Vídeos com overlay de marca</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Bio profile otimizada</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Facebook</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cover photo + profile pic</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sobre/Informações completas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">YouTube</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Channel art + thumbnail pattern</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">LinkedIn</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Company page otimizada</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Mídia paga (Meta Ads)</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Criativos estáticos para feed</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Criativos para stories</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Vídeos curtos para Reels</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Mídia paga (Google Ads)</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Display banners</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Responsive search ads</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Outdoor/OOH</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sinalização externa rua</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Parcerias/Influencers</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Kit de imprensa digital</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Brand guidelines para parceiros</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Indicação boca-a-boca</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cartões de visita</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cards 'Indique um amigo'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                            </div>
-                        </div>
-                    
-                        <div class="stage-card">
-                            <div class="stage-header">
-                                <div class="stage-name">Consideração</div>
-                                <div class="stage-count">47</div>
-                            </div>
-                            <div class="channels-container">
-                                
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Homepage</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Hero section principal</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Seções de conteúdo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">CTAs principais</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Sobre</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Página história completa</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Timeline visual 1880-2025</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Fotos da família/equipe</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Produtos</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Página categoria (Dry Aged)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Fichas de produto individuais</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Galeria de fotos produtos</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Ícones educativos (dias maturação)</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Badges/selos qualidade</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Restaurante</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Landing page restaurante</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Galeria ambiente</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Menu digital interativo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Blog</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template posts</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Featured images</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Infográficos educativos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - FAQ</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Página perguntas frequentes</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Contato</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Formulário + mapa</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram Feed</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Carrossel educativo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Posts de produto</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Posts de bastidores</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Posts de cliente (UGC curado)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Posts de eventos/datas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram Stories</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Stories de processo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Stories de produto</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Stories de promoção</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Stories de engagement (enquetes)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram Highlights</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'Cardápio'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'Dry Aged'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'História'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'Delivery'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'Restaurante'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'Açougue'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Capa 'Clientes'</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram Comentários</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Templates de resposta</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram DM</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Respostas rápidas padrão</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Menu digital (iFood/Rappi)</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Banner header</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Fotos produtos padronizadas</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Descrições otimizadas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Categorias organizadas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Email marketing</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template newsletter</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Header/footer padrão</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Banners promocionais</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">YouTube</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Vídeos educativos (como preparar)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Tour virtual restaurante</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Processo dry aged explicado</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                            </div>
-                        </div>
-                    
-                        <div class="stage-card">
-                            <div class="stage-header">
-                                <div class="stage-name">Decisão</div>
-                                <div class="stage-count">21</div>
-                            </div>
-                            <div class="channels-container">
-                                
-                        <div class="channel-group">
-                            <div class="channel-header">WhatsApp Business</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Foto de perfil</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Foto de capa</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Catálogo de produtos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Descrição do negócio</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Mensagens automáticas boas-vindas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Mensagens automáticas ausência</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Respostas rápidas padrão</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Status/Stories</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-mail transacional</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template confirmação pedido</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template pedido enviado</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template pedido entregue</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template reserva confirmada</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template lembrete reserva</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Template cancelamento</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">SMS/Notificações</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Templates notificações push</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Checkout e-commerce</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Página carrinho</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Página pagamento</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Página confirmação</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Site - Promoções</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Banners sazonais</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Pop-ups primeira visita</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Exit-intent offers</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                            </div>
-                        </div>
-                    
-                        <div class="stage-card">
-                            <div class="stage-header">
-                                <div class="stage-name">Experiência</div>
-                                <div class="stage-count">86</div>
-                            </div>
-                            <div class="channels-container">
-                                
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Fachada</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Letreiro principal</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sinalização externa</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Adesivos porta/vidro</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Entrada</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Quadro boas-vindas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Display 'Reserve sua mesa'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Recepção</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Backdrop/parede branded</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Material ponto de espera</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Paredes</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Timeline história família</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Fotos históricas emolduradas</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Infográfico processo dry aged</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Mapa cortes de carne</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Certificados/prêmios</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Neon/luminoso com frase</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Mesa</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cardápio principal</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Menu de vinhos/bebidas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Menu infantil</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Menu sobremesas</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Guardanapos de papel</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Guardanapos de tecido</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Papel vegetal decorativo</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sousplat/base prato</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Identificador de mesa</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Totem mesa (promoções/QR)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card 'Conheça nosso e-commerce'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card educativo dry aged</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Alimentos</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Bandeirinha produtos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Etiqueta churrasco</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Pratos (louça branded)</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Bowls</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Tábuas de carne</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Facas com logo</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Conta</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Comanda/nota</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Porta-comanda</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card feedback (QR Google review)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card programa fidelidade</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Saída</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Adesivo 'Obrigado pela visita'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Flyer take-away menu</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Take-away</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sacola papel kraft</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Embalagem marmita</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Embalagem hambúrguer</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Guardanapos avulsos</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Talheres descartáveis embalados</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Banheiro</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Espelho com frase/logo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Toalhas de papel</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Restaurante - Uniforme</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Avental funcionários</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Camisetas equipe</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Bonés/chapéus</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Crachás identificação</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Açougue físico - Fachada</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Letreiro</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Adesivos vitrine</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Açougue físico - Interno</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Display produtos</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sinalização categorias</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cartazes educativos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Banner promoções</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Açougue físico - Balcão</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Etiquetas produtos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Identificadores cortes</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Tabela de preços</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Açougue físico - Embalagem</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Papel kraft personalizado</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Sacola papel</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Etiqueta seladora</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Adesivo 'Desde 1880'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Açougue físico - Conta</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cupom fiscal personalizado</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cartão de visita</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Flyer e-commerce</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-commerce - Embalagem 1ª</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Bag térmica</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Caixa térmica (isopor)</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Gelo reutilizável branded</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-commerce - Embalagem 2ª</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Embalagem plástica a vácuo</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Bandeja plástica</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Envoltório papel manteiga</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Caixa kraft individual</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-commerce - Identificação</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Etiqueta produto (nome/peso)</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Etiqueta 'Dry Aged X dias'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Selo 'Desde 1880'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Adesivo lacre qualidade</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-commerce - Informação</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card 'Como preparar'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card 'História do corte'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Card 'Conheça nosso restaurante'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Folheto catálogo produtos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">QR code receitas</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">QR code programa fidelidade</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-commerce - Brinde</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Adesivo decorativo</div>
-                                        <div class="touchpoint-tags">
-                                            <span class="tag">👁️</span>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Imã de geladeira</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Marcador de ponto da carne</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">E-commerce - Nota fiscal</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cupom fiscal personalizado</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Carta agradecimento assinada</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                            </div>
-                        </div>
-                    
-                        <div class="stage-card">
-                            <div class="stage-header">
-                                <div class="stage-name">Pós-experiência</div>
-                                <div class="stage-count">22</div>
-                            </div>
-                            <div class="channels-container">
-                                
-                        <div class="channel-group">
-                            <div class="channel-header">Google Maps</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Resposta review positivo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Resposta review negativo</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Resposta review neutro</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Instagram</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Reshare UGC nos stories</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Agradecimento menção</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Post compilação clientes</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Email marketing</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Newsletter mensal</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email 'Sentimos sua falta'</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email aniversário cliente</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email produtos novos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email receitas sazonais</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">WhatsApp</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Follow-up pós-visita restaurante</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Follow-up pós-compra e-commerce</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Pedido de review</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Ofertas exclusivas recorrentes</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">SMS</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Lembrete promoção semanal</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            <span class="tag">🔊</span>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Programa fidelidade</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Cartão físico</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">App/digital wallet</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email boas-vindas programa</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email acúmulo de pontos</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                        <div class="channel-group">
-                            <div class="channel-header">Pesquisa satisfação</div>
-                            <div class="touchpoints-grid">
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Formulário digital branded</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="touchpoint">
-                                        <div class="touchpoint-name">Email resultados/agradecimento</div>
-                                        <div class="touchpoint-tags">
-                                            
-                                            
-                                            <span class="tag">👁️</span><span class="tag">🔊</span>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    
-                            </div>
-                        </div>
-                    </div>
-
+    <div class="main">
+        <div id="stagesContainer"></div>
+    </div>
+    
     <script>
-        const data = {
-            "Descoberta": {
-                "Google Maps": [
-                    { name: "Respostas reviews personalizadas", channel: "digital", identity: "verbal" },
-                    { name: "Foto de capa curada", channel: "digital", identity: "visual" },
-                    { name: "Galeria de fotos com narrativa", channel: "digital", identity: "visual" },
-                    { name: "Descrição completa do negócio", channel: "digital", identity: "verbal" },
-                    { name: "Posts/atualizações regulares", channel: "digital", identity: "both" }
-                ],
-                "Busca Google": [
-                    { name: "Meta descriptions otimizadas", channel: "digital", identity: "verbal" },
-                    { name: "Featured snippets estruturados", channel: "digital", identity: "verbal" }
-                ],
-                "Busca IA (ChatGPT/Perplexity)": [
-                    { name: "Conteúdo estruturado para indexação", channel: "digital", identity: "verbal" }
-                ],
-                "Instagram": [
-                    { name: "Posts grid com identidade visual", channel: "digital", identity: "both" },
-                    { name: "Templates stories com padrão", channel: "digital", identity: "both" },
-                    { name: "Reels com branding consistente", channel: "digital", identity: "both" },
-                    { name: "Link tree organizado", channel: "digital", identity: "verbal" }
-                ],
-                "TikTok": [
-                    { name: "Vídeos com overlay de marca", channel: "digital", identity: "both" },
-                    { name: "Bio profile otimizada", channel: "digital", identity: "verbal" }
-                ],
-                "Facebook": [
-                    { name: "Cover photo + profile pic", channel: "digital", identity: "visual" },
-                    { name: "Sobre/Informações completas", channel: "digital", identity: "verbal" }
-                ],
-                "YouTube": [
-                    { name: "Channel art + thumbnail pattern", channel: "digital", identity: "visual" }
-                ],
-                "LinkedIn": [
-                    { name: "Company page otimizada", channel: "digital", identity: "both" }
-                ],
-                "Mídia paga (Meta Ads)": [
-                    { name: "Criativos estáticos para feed", channel: "digital", identity: "both" },
-                    { name: "Criativos para stories", channel: "digital", identity: "both" },
-                    { name: "Vídeos curtos para Reels", channel: "digital", identity: "both" }
-                ],
-                "Mídia paga (Google Ads)": [
-                    { name: "Display banners", channel: "digital", identity: "both" },
-                    { name: "Responsive search ads", channel: "digital", identity: "verbal" }
-                ],
-                "Outdoor/OOH": [
-                    { name: "Sinalização externa rua", channel: "fisico", identity: "both" }
-                ],
-                "Parcerias/Influencers": [
-                    { name: "Kit de imprensa digital", channel: "digital", identity: "both" },
-                    { name: "Brand guidelines para parceiros", channel: "digital", identity: "both" }
-                ],
-                "Indicação boca-a-boca": [
-                    { name: "Cartões de visita", channel: "fisico", identity: "both" },
-                    { name: "Cards 'Indique um amigo'", channel: "fisico", identity: "both" }
-                ]
-            },
-            "Consideração": {
-                "Site - Homepage": [
-                    { name: "Hero section principal", channel: "digital", identity: "both" },
-                    { name: "Seções de conteúdo", channel: "digital", identity: "both" },
-                    { name: "CTAs principais", channel: "digital", identity: "both" }
-                ],
-                "Site - Sobre": [
-                    { name: "Página história completa", channel: "digital", identity: "both" },
-                    { name: "Timeline visual 1880-2025", channel: "digital", identity: "both" },
-                    { name: "Fotos da família/equipe", channel: "digital", identity: "visual" }
-                ],
-                "Site - Produtos": [
-                    { name: "Página categoria (Dry Aged)", channel: "digital", identity: "both" },
-                    { name: "Fichas de produto individuais", channel: "digital", identity: "both" },
-                    { name: "Galeria de fotos produtos", channel: "digital", identity: "visual" },
-                    { name: "Ícones educativos (dias maturação)", channel: "digital", identity: "visual" },
-                    { name: "Badges/selos qualidade", channel: "digital", identity: "visual" }
-                ],
-                "Site - Restaurante": [
-                    { name: "Landing page restaurante", channel: "digital", identity: "both" },
-                    { name: "Galeria ambiente", channel: "digital", identity: "visual" },
-                    { name: "Menu digital interativo", channel: "digital", identity: "both" }
-                ],
-                "Site - Blog": [
-                    { name: "Template posts", channel: "digital", identity: "both" },
-                    { name: "Featured images", channel: "digital", identity: "visual" },
-                    { name: "Infográficos educativos", channel: "digital", identity: "both" }
-                ],
-                "Site - FAQ": [
-                    { name: "Página perguntas frequentes", channel: "digital", identity: "verbal" }
-                ],
-                "Site - Contato": [
-                    { name: "Formulário + mapa", channel: "digital", identity: "both" }
-                ],
-                "Instagram Feed": [
-                    { name: "Carrossel educativo", channel: "digital", identity: "both" },
-                    { name: "Posts de produto", channel: "digital", identity: "both" },
-                    { name: "Posts de bastidores", channel: "digital", identity: "both" },
-                    { name: "Posts de cliente (UGC curado)", channel: "digital", identity: "both" },
-                    { name: "Posts de eventos/datas", channel: "digital", identity: "both" }
-                ],
-                "Instagram Stories": [
-                    { name: "Stories de processo", channel: "digital", identity: "both" },
-                    { name: "Stories de produto", channel: "digital", identity: "both" },
-                    { name: "Stories de promoção", channel: "digital", identity: "both" },
-                    { name: "Stories de engagement (enquetes)", channel: "digital", identity: "both" }
-                ],
-                "Instagram Highlights": [
-                    { name: "Capa 'Cardápio'", channel: "digital", identity: "visual" },
-                    { name: "Capa 'Dry Aged'", channel: "digital", identity: "visual" },
-                    { name: "Capa 'História'", channel: "digital", identity: "visual" },
-                    { name: "Capa 'Delivery'", channel: "digital", identity: "visual" },
-                    { name: "Capa 'Restaurante'", channel: "digital", identity: "visual" },
-                    { name: "Capa 'Açougue'", channel: "digital", identity: "visual" },
-                    { name: "Capa 'Clientes'", channel: "digital", identity: "visual" }
-                ],
-                "Instagram Comentários": [
-                    { name: "Templates de resposta", channel: "digital", identity: "verbal" }
-                ],
-                "Instagram DM": [
-                    { name: "Respostas rápidas padrão", channel: "digital", identity: "verbal" }
-                ],
-                "Menu digital (iFood/Rappi)": [
-                    { name: "Banner header", channel: "digital", identity: "visual" },
-                    { name: "Fotos produtos padronizadas", channel: "digital", identity: "visual" },
-                    { name: "Descrições otimizadas", channel: "digital", identity: "verbal" },
-                    { name: "Categorias organizadas", channel: "digital", identity: "verbal" }
-                ],
-                "Email marketing": [
-                    { name: "Template newsletter", channel: "digital", identity: "both" },
-                    { name: "Header/footer padrão", channel: "digital", identity: "visual" },
-                    { name: "Banners promocionais", channel: "digital", identity: "both" }
-                ],
-                "YouTube": [
-                    { name: "Vídeos educativos (como preparar)", channel: "digital", identity: "both" },
-                    { name: "Tour virtual restaurante", channel: "digital", identity: "both" },
-                    { name: "Processo dry aged explicado", channel: "digital", identity: "both" }
-                ]
-            },
-            "Decisão": {
-                "WhatsApp Business": [
-                    { name: "Foto de perfil", channel: "digital", identity: "visual" },
-                    { name: "Foto de capa", channel: "digital", identity: "visual" },
-                    { name: "Catálogo de produtos", channel: "digital", identity: "both" },
-                    { name: "Descrição do negócio", channel: "digital", identity: "verbal" },
-                    { name: "Mensagens automáticas boas-vindas", channel: "digital", identity: "verbal" },
-                    { name: "Mensagens automáticas ausência", channel: "digital", identity: "verbal" },
-                    { name: "Respostas rápidas padrão", channel: "digital", identity: "verbal" },
-                    { name: "Status/Stories", channel: "digital", identity: "both" }
-                ],
-                "E-mail transacional": [
-                    { name: "Template confirmação pedido", channel: "digital", identity: "both" },
-                    { name: "Template pedido enviado", channel: "digital", identity: "both" },
-                    { name: "Template pedido entregue", channel: "digital", identity: "both" },
-                    { name: "Template reserva confirmada", channel: "digital", identity: "both" },
-                    { name: "Template lembrete reserva", channel: "digital", identity: "both" },
-                    { name: "Template cancelamento", channel: "digital", identity: "both" }
-                ],
-                "SMS/Notificações": [
-                    { name: "Templates notificações push", channel: "digital", identity: "verbal" }
-                ],
-                "Checkout e-commerce": [
-                    { name: "Página carrinho", channel: "digital", identity: "both" },
-                    { name: "Página pagamento", channel: "digital", identity: "both" },
-                    { name: "Página confirmação", channel: "digital", identity: "both" }
-                ],
-                "Site - Promoções": [
-                    { name: "Banners sazonais", channel: "digital", identity: "both" },
-                    { name: "Pop-ups primeira visita", channel: "digital", identity: "both" },
-                    { name: "Exit-intent offers", channel: "digital", identity: "both" }
-                ]
-            },
-            "Experiência": {
-                "Restaurante - Fachada": [
-                    { name: "Letreiro principal", channel: "fisico", identity: "visual" },
-                    { name: "Sinalização externa", channel: "fisico", identity: "both" },
-                    { name: "Adesivos porta/vidro", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Entrada": [
-                    { name: "Quadro boas-vindas", channel: "fisico", identity: "both" },
-                    { name: "Display 'Reserve sua mesa'", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Recepção": [
-                    { name: "Backdrop/parede branded", channel: "fisico", identity: "visual" },
-                    { name: "Material ponto de espera", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Paredes": [
-                    { name: "Timeline história família", channel: "fisico", identity: "both" },
-                    { name: "Fotos históricas emolduradas", channel: "fisico", identity: "visual" },
-                    { name: "Infográfico processo dry aged", channel: "fisico", identity: "both" },
-                    { name: "Mapa cortes de carne", channel: "fisico", identity: "both" },
-                    { name: "Certificados/prêmios", channel: "fisico", identity: "both" },
-                    { name: "Neon/luminoso com frase", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Mesa": [
-                    { name: "Cardápio principal", channel: "fisico", identity: "both" },
-                    { name: "Menu de vinhos/bebidas", channel: "fisico", identity: "both" },
-                    { name: "Menu infantil", channel: "fisico", identity: "both" },
-                    { name: "Menu sobremesas", channel: "fisico", identity: "both" },
-                    { name: "Guardanapos de papel", channel: "fisico", identity: "visual" },
-                    { name: "Guardanapos de tecido", channel: "fisico", identity: "visual" },
-                    { name: "Papel vegetal decorativo", channel: "fisico", identity: "visual" },
-                    { name: "Sousplat/base prato", channel: "fisico", identity: "visual" },
-                    { name: "Identificador de mesa", channel: "fisico", identity: "both" },
-                    { name: "Totem mesa (promoções/QR)", channel: "fisico", identity: "both" },
-                    { name: "Card 'Conheça nosso e-commerce'", channel: "fisico", identity: "both" },
-                    { name: "Card educativo dry aged", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Alimentos": [
-                    { name: "Bandeirinha produtos", channel: "fisico", identity: "both" },
-                    { name: "Etiqueta churrasco", channel: "fisico", identity: "both" },
-                    { name: "Pratos (louça branded)", channel: "fisico", identity: "visual" },
-                    { name: "Bowls", channel: "fisico", identity: "visual" },
-                    { name: "Tábuas de carne", channel: "fisico", identity: "visual" },
-                    { name: "Facas com logo", channel: "fisico", identity: "visual" }
-                ],
-                "Restaurante - Conta": [
-                    { name: "Comanda/nota", channel: "fisico", identity: "both" },
-                    { name: "Porta-comanda", channel: "fisico", identity: "visual" },
-                    { name: "Card feedback (QR Google review)", channel: "fisico", identity: "both" },
-                    { name: "Card programa fidelidade", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Saída": [
-                    { name: "Adesivo 'Obrigado pela visita'", channel: "fisico", identity: "both" },
-                    { name: "Flyer take-away menu", channel: "fisico", identity: "both" }
-                ],
-                "Restaurante - Take-away": [
-                    { name: "Sacola papel kraft", channel: "fisico", identity: "visual" },
-                    { name: "Embalagem marmita", channel: "fisico", identity: "visual" },
-                    { name: "Embalagem hambúrguer", channel: "fisico", identity: "visual" },
-                    { name: "Guardanapos avulsos", channel: "fisico", identity: "visual" },
-                    { name: "Talheres descartáveis embalados", channel: "fisico", identity: "visual" }
-                ],
-                "Restaurante - Banheiro": [
-                    { name: "Espelho com frase/logo", channel: "fisico", identity: "both" },
-                    { name: "Toalhas de papel", channel: "fisico", identity: "visual" }
-                ],
-                "Restaurante - Uniforme": [
-                    { name: "Avental funcionários", channel: "fisico", identity: "visual" },
-                    { name: "Camisetas equipe", channel: "fisico", identity: "visual" },
-                    { name: "Bonés/chapéus", channel: "fisico", identity: "visual" },
-                    { name: "Crachás identificação", channel: "fisico", identity: "both" }
-                ],
-                "Açougue físico - Fachada": [
-                    { name: "Letreiro", channel: "fisico", identity: "visual" },
-                    { name: "Adesivos vitrine", channel: "fisico", identity: "both" }
-                ],
-                "Açougue físico - Interno": [
-                    { name: "Display produtos", channel: "fisico", identity: "visual" },
-                    { name: "Sinalização categorias", channel: "fisico", identity: "both" },
-                    { name: "Cartazes educativos", channel: "fisico", identity: "both" },
-                    { name: "Banner promoções", channel: "fisico", identity: "both" }
-                ],
-                "Açougue físico - Balcão": [
-                    { name: "Etiquetas produtos", channel: "fisico", identity: "both" },
-                    { name: "Identificadores cortes", channel: "fisico", identity: "both" },
-                    { name: "Tabela de preços", channel: "fisico", identity: "both" }
-                ],
-                "Açougue físico - Embalagem": [
-                    { name: "Papel kraft personalizado", channel: "fisico", identity: "visual" },
-                    { name: "Sacola papel", channel: "fisico", identity: "visual" },
-                    { name: "Etiqueta seladora", channel: "fisico", identity: "both" },
-                    { name: "Adesivo 'Desde 1880'", channel: "fisico", identity: "both" }
-                ],
-                "Açougue físico - Conta": [
-                    { name: "Cupom fiscal personalizado", channel: "fisico", identity: "both" },
-                    { name: "Cartão de visita", channel: "fisico", identity: "both" },
-                    { name: "Flyer e-commerce", channel: "fisico", identity: "both" }
-                ],
-                "E-commerce - Embalagem 1ª": [
-                    { name: "Bag térmica", channel: "fisico", identity: "visual" },
-                    { name: "Caixa térmica (isopor)", channel: "fisico", identity: "visual" },
-                    { name: "Gelo reutilizável branded", channel: "fisico", identity: "visual" }
-                ],
-                "E-commerce - Embalagem 2ª": [
-                    { name: "Embalagem plástica a vácuo", channel: "fisico", identity: "visual" },
-                    { name: "Bandeja plástica", channel: "fisico", identity: "visual" },
-                    { name: "Envoltório papel manteiga", channel: "fisico", identity: "visual" },
-                    { name: "Caixa kraft individual", channel: "fisico", identity: "visual" }
-                ],
-                "E-commerce - Identificação": [
-                    { name: "Etiqueta produto (nome/peso)", channel: "fisico", identity: "both" },
-                    { name: "Etiqueta 'Dry Aged X dias'", channel: "fisico", identity: "both" },
-                    { name: "Selo 'Desde 1880'", channel: "fisico", identity: "both" },
-                    { name: "Adesivo lacre qualidade", channel: "fisico", identity: "both" }
-                ],
-                "E-commerce - Informação": [
-                    { name: "Card 'Como preparar'", channel: "fisico", identity: "both" },
-                    { name: "Card 'História do corte'", channel: "fisico", identity: "both" },
-                    { name: "Card 'Conheça nosso restaurante'", channel: "fisico", identity: "both" },
-                    { name: "Folheto catálogo produtos", channel: "fisico", identity: "both" },
-                    { name: "QR code receitas", channel: "fisico", identity: "visual" },
-                    { name: "QR code programa fidelidade", channel: "fisico", identity: "visual" }
-                ],
-                "E-commerce - Brinde": [
-                    { name: "Adesivo decorativo", channel: "fisico", identity: "visual" },
-                    { name: "Imã de geladeira", channel: "fisico", identity: "both" },
-                    { name: "Marcador de ponto da carne", channel: "fisico", identity: "both" }
-                ],
-                "E-commerce - Nota fiscal": [
-                    { name: "Cupom fiscal personalizado", channel: "fisico", identity: "both" },
-                    { name: "Carta agradecimento assinada", channel: "fisico", identity: "both" }
-                ]
-            },
-            "Pós-experiência": {
-                "Google Maps": [
-                    { name: "Resposta review positivo", channel: "digital", identity: "verbal" },
-                    { name: "Resposta review negativo", channel: "digital", identity: "verbal" },
-                    { name: "Resposta review neutro", channel: "digital", identity: "verbal" }
-                ],
-                "Instagram": [
-                    { name: "Reshare UGC nos stories", channel: "digital", identity: "both" },
-                    { name: "Agradecimento menção", channel: "digital", identity: "both" },
-                    { name: "Post compilação clientes", channel: "digital", identity: "both" }
-                ],
-                "Email marketing": [
-                    { name: "Newsletter mensal", channel: "digital", identity: "both" },
-                    { name: "Email 'Sentimos sua falta'", channel: "digital", identity: "both" },
-                    { name: "Email aniversário cliente", channel: "digital", identity: "both" },
-                    { name: "Email produtos novos", channel: "digital", identity: "both" },
-                    { name: "Email receitas sazonais", channel: "digital", identity: "both" }
-                ],
-                "WhatsApp": [
-                    { name: "Follow-up pós-visita restaurante", channel: "digital", identity: "verbal" },
-                    { name: "Follow-up pós-compra e-commerce", channel: "digital", identity: "verbal" },
-                    { name: "Pedido de review", channel: "digital", identity: "verbal" },
-                    { name: "Ofertas exclusivas recorrentes", channel: "digital", identity: "verbal" }
-                ],
-                "SMS": [
-                    { name: "Lembrete promoção semanal", channel: "digital", identity: "verbal" }
-                ],
-                "Programa fidelidade": [
-                    { name: "Cartão físico", channel: "fisico", identity: "both" },
-                    { name: "App/digital wallet", channel: "digital", identity: "both" },
-                    { name: "Email boas-vindas programa", channel: "digital", identity: "both" },
-                    { name: "Email acúmulo de pontos", channel: "digital", identity: "both" }
-                ],
-                "Pesquisa satisfação": [
-                    { name: "Formulário digital branded", channel: "digital", identity: "both" },
-                    { name: "Email resultados/agradecimento", channel: "digital", identity: "both" }
-                ]
-            }
-        };
+        // Dados exatos da planilha fornecida
+        const rawData = `Estágio da Jornada	Canal de Distribuição	Asset para Aplicação de Marca	Identidade
+DESCOBERTA	Google Maps	Respostas a reviews personalizadas	Verbal
+DESCOBERTA	Google Maps	Foto de capa curada	Visual
+DESCOBERTA	Google Maps	Galeria de fotos com narrativa	Visual
+DESCOBERTA	Google Maps	Descrição completa do negócio	Verbal
+DESCOBERTA	Google Maps	Posts/atualizações regulares	Verbal + Visual
+DESCOBERTA	Busca Google	Meta descriptions otimizadas	Verbal
+DESCOBERTA	Busca Google	Featured snippets estruturados	Verbal
+DESCOBERTA	Busca IA (ChatGPT/Perplexy)	Conteúdo estruturado para indexação	Verbal
+DESCOBERTA	Instagram Feed	Posts grid com identidade visual	Verbal + Visual
+DESCOBERTA	Instagram Stories	Templates stories com padrão	Verbal + Visual
+DESCOBERTA	Instagram Reels	Reels com branding consistente	Verbal + Visual
+DESCOBERTA	Instagram Bio	Link tree organizado	Verbal
+DESCOBERTA	TikTok	Vídeos com overlay de marca	Verbal + Visual
+DESCOBERTA	TikTok	Bio profile otimizada	Verbal
+DESCOBERTA	Facebook	Cover photo + profile pic	Visual
+DESCOBERTA	Facebook	Sobre/Informações completas	Verbal
+DESCOBERTA	YouTube	Channel art + thumbnail pattern	Visual
+DESCOBERTA	LinkedIn	Company page otimizada	Verbal + Visual
+DESCOBERTA	Mídia paga (Meta Ads)	Criativos estáticos para feed	Verbal + Visual
+DESCOBERTA	Mídia paga (Meta Ads)	Criativos para stories	Verbal + Visual
+DESCOBERTA	Mídia paga (Meta Ads)	Vídeos curtos para Reels	Verbal + Visual
+DESCOBERTA	Mídia paga (Google Ads)	Display banners	Verbal + Visual
+DESCOBERTA	Mídia paga (Google Ads)	Responsive search ads	Verbal
+DESCOBERTA	Outdoor/OOH	Sinalização externa rua	Verbal + Visual
+DESCOBERTA	Parcerias/Influencers	Kit de imprensa digital	Verbal + Visual
+DESCOBERTA	Parcerias/Influencers	Brand guidelines para parceiros	Verbal + Visual
+DESCOBERTA	Indicação boca-a-boca	Cartões de visita	Verbal + Visual
+DESCOBERTA	Indicação boca-a-boca	Cards "Indique um amigo"	Verbal + Visual
+CONSIDERAÇÃO	Site - Homepage	Hero section principal	Verbal + Visual
+CONSIDERAÇÃO	Site - Homepage	Seções de conteúdo	Verbal + Visual
+CONSIDERAÇÃO	Site - Homepage	CTAs principais	Verbal + Visual
+CONSIDERAÇÃO	Site - Sobre	Página história completa	Verbal + Visual
+CONSIDERAÇÃO	Site - Sobre	Timeline visual 1880-2025	Verbal + Visual
+CONSIDERAÇÃO	Site - Sobre	Fotos da família/equipe	Visual
+CONSIDERAÇÃO	Site - Produtos	Página categoria (Dry Aged)	Verbal + Visual
+CONSIDERAÇÃO	Site - Produtos	Fichas de produto individuais	Verbal + Visual
+CONSIDERAÇÃO	Site - Produtos	Galeria de fotos produtos	Visual
+CONSIDERAÇÃO	Site - Produtos	Ícones educativos (dias maturação)	Visual
+CONSIDERAÇÃO	Site - Produtos	Badges/selos qualidade	Visual
+CONSIDERAÇÃO	Site - Restaurante	Landing page restaurante	Verbal + Visual
+CONSIDERAÇÃO	Site - Restaurante	Galeria ambiente	Visual
+CONSIDERAÇÃO	Site - Restaurante	Menu digital interativo	Verbal + Visual
+CONSIDERAÇÃO	Site - Blog	Template posts	Verbal + Visual
+CONSIDERAÇÃO	Site - Blog	Featured images	Visual
+CONSIDERAÇÃO	Site - Blog	Infográficos educativos	Verbal + Visual
+CONSIDERAÇÃO	Site - FAQ	Página perguntas frequentes	Verbal
+CONSIDERAÇÃO	Site - Contato	Formulário + mapa	Verbal + Visual
+CONSIDERAÇÃO	Instagram Feed	Carrossel educativo	Verbal + Visual
+CONSIDERAÇÃO	Instagram Feed	Posts de produto	Verbal + Visual
+CONSIDERAÇÃO	Instagram Feed	Posts de bastidores	Verbal + Visual
+CONSIDERAÇÃO	Instagram Feed	Posts de cliente (UGC curado)	Verbal + Visual
+CONSIDERAÇÃO	Instagram Feed	Posts de eventos/datas	Verbal + Visual
+CONSIDERAÇÃO	Instagram Stories	Stories de processo	Verbal + Visual
+CONSIDERAÇÃO	Instagram Stories	Stories de produto	Verbal + Visual
+CONSIDERAÇÃO	Instagram Stories	Stories de promoção	Verbal + Visual
+CONSIDERAÇÃO	Instagram Stories	Stories de engagement (enquetes)	Verbal + Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "Cardápio"	Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "Dry Aged"	Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "História"	Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "Delivery"	Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "Restaurante"	Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "Açougue"	Visual
+CONSIDERAÇÃO	Instagram Highlights	Capa "Clientes"	Visual
+CONSIDERAÇÃO	Instagram Comentários	Templates de resposta	Verbal
+CONSIDERAÇÃO	Instagram DM	Respostas rápidas padrão	Verbal
+CONSIDERAÇÃO	Menu digital (iFood/Rappi)	Banner header	Visual
+CONSIDERAÇÃO	Menu digital (iFood/Rappi)	Fotos produtos padronizadas	Visual
+CONSIDERAÇÃO	Menu digital (iFood/Rappi)	Descrições otimizadas	Verbal
+CONSIDERAÇÃO	Menu digital (iFood/Rappi)	Categorias organizadas	Verbal
+CONSIDERAÇÃO	Email marketing	Template newsletter	Verbal + Visual
+CONSIDERAÇÃO	Email marketing	Header/footer padrão	Visual
+CONSIDERAÇÃO	Email marketing	Banners promocionais	Verbal + Visual
+CONSIDERAÇÃO	YouTube	Vídeos educativos (como preparar)	Verbal + Visual
+CONSIDERAÇÃO	YouTube	Tour virtual restaurante	Verbal + Visual
+CONSIDERAÇÃO	YouTube	Processo dry aged explicado	Verbal + Visual
+DECISÃO	WhatsApp Business	Foto de perfil	Visual
+DECISÃO	WhatsApp Business	Foto de capa	Visual
+DECISÃO	WhatsApp Business	Catálogo de produtos	Verbal + Visual
+DECISÃO	WhatsApp Business	Descrição do negócio	Verbal
+DECISÃO	WhatsApp Business	Mensagens automáticas boas-vindas	Verbal
+DECISÃO	WhatsApp Business	Mensagens automáticas ausência	Verbal
+DECISÃO	WhatsApp Business	Respostas rápidas padrão	Verbal
+DECISÃO	WhatsApp Business	Status/Stories	Verbal + Visual
+DECISÃO	E-mail transacional	Template confirmação pedido	Verbal + Visual
+DECISÃO	E-mail transacional	Template pedido enviado	Verbal + Visual
+DECISÃO	E-mail transacional	Template pedido entregue	Verbal + Visual
+DECISÃO	E-mail transacional	Template reserva confirmada	Verbal + Visual
+DECISÃO	E-mail transacional	Template lembrete reserva	Verbal + Visual
+DECISÃO	E-mail transacional	Template cancelamento	Verbal + Visual
+DECISÃO	SMS/Notificações	Templates notificações push	Verbal
+DECISÃO	Checkout e-commerce	Página carrinho	Verbal + Visual
+DECISÃO	Checkout e-commerce	Página pagamento	Verbal + Visual
+DECISÃO	Checkout e-commerce	Página confirmação	Verbal + Visual
+DECISÃO	Site - Promoções	Banners sazonais	Verbal + Visual
+DECISÃO	Site - Promoções	Pop-ups primeira visita	Verbal + Visual
+DECISÃO	Site - Promoções	Exit-intent offers	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Fachada	Letreiro principal	Visual
+EXPERIÊNCIA	Restaurante - Fachada	Sinalização externa	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Fachada	Adesivos porta/vidro	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Entrada	Quadro boas-vindas	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Entrada	Display "Reserve sua mesa"	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Recepção	Backdrop/parede branded	Visual
+EXPERIÊNCIA	Restaurante - Recepção	Material ponto de espera	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Paredes	Timeline história família	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Paredes	Fotos históricas emolduradas	Visual
+EXPERIÊNCIA	Restaurante - Paredes	Infográfico processo dry aged	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Paredes	Mapa cortes de carne	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Paredes	Certificados/prêmios	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Paredes	Neon/luminoso com frase	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Cardápio principal	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Menu de vinhos/bebidas	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Menu infantil	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Menu sobremesas	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Guardanapos de papel	Visual
+EXPERIÊNCIA	Restaurante - Mesa	Guardanapos de tecido	Visual
+EXPERIÊNCIA	Restaurante - Mesa	Papel vegetal decorativo	Visual
+EXPERIÊNCIA	Restaurante - Mesa	Sousplat/base prato	Visual
+EXPERIÊNCIA	Restaurante - Mesa	Identificador de mesa	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Totem mesa (promoções/QR)	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Card "Conheça nosso e-commerce"	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Mesa	Card educativo dry aged	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Alimentos	Bandeirinha produtos	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Alimentos	Etiqueta churrasco	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Alimentos	Pratos (louça branded)	Visual
+EXPERIÊNCIA	Restaurante - Alimentos	Bowls	Visual
+EXPERIÊNCIA	Restaurante - Alimentos	Tábuas de carne	Visual
+EXPERIÊNCIA	Restaurante - Alimentos	Facas com logo	Visual
+EXPERIÊNCIA	Restaurante - Conta	Comanda/nota	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Conta	Porta-comanda	Visual
+EXPERIÊNCIA	Restaurante - Conta	Card feedback (QR Google review)	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Conta	Card programa fidelidade	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Saída	Adesivo "Obrigado pela visita"	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Saída	Flyer take-away menu	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Take-away	Sacola papel kraft	Visual
+EXPERIÊNCIA	Restaurante - Take-away	Embalagem marmita	Visual
+EXPERIÊNCIA	Restaurante - Take-away	Embalagem hambúrguer	Visual
+EXPERIÊNCIA	Restaurante - Take-away	Guardanapos avulsos	Visual
+EXPERIÊNCIA	Restaurante - Take-away	Talheres descartáveis embalados	Visual
+EXPERIÊNCIA	Restaurante - Banheiro	Espelho com frase/logo	Verbal + Visual
+EXPERIÊNCIA	Restaurante - Banheiro	Toalhas de papel	Visual
+EXPERIÊNCIA	Restaurante - Uniforme	Avental funcionários	Visual
+EXPERIÊNCIA	Restaurante - Uniforme	Camisetas equipe	Visual
+EXPERIÊNCIA	Restaurante - Uniforme	Bonés/chapéus	Visual
+EXPERIÊNCIA	Restaurante - Uniforme	Crachás identificação	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Fachada	Letreiro	Visual
+EXPERIÊNCIA	Açougue físico - Fachada	Adesivos vitrine	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Interno	Display produtos	Visual
+EXPERIÊNCIA	Açougue físico - Interno	Sinalização categorias	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Interno	Cartazes educativos	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Interno	Banner promoções	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Balcão	Etiquetas produtos	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Balcão	Identificadores cortes	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Balcão	Tabela de preços	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Embalagem	Papel kraft personalizado	Visual
+EXPERIÊNCIA	Açougue físico - Embalagem	Sacola papel	Visual
+EXPERIÊNCIA	Açougue físico - Embalagem	Etiqueta seladora	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Embalagem	Adesivo "Desde 1880"	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Conta	Cupom fiscal personalizado	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Conta	Cartão de visita	Verbal + Visual
+EXPERIÊNCIA	Açougue físico - Conta	Flyer e-commerce	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Embalagem 1ª	Bag térmica	Visual
+EXPERIÊNCIA	E-commerce - Embalagem 1ª	Caixa térmica (isopor)	Visual
+EXPERIÊNCIA	E-commerce - Embalagem 1ª	Gelo reutilizável branded	Visual
+EXPERIÊNCIA	E-commerce - Embalagem 2ª	Embalagem plástica a vácuo	Visual
+EXPERIÊNCIA	E-commerce - Embalagem 2ª	Bandeja plástica	Visual
+EXPERIÊNCIA	E-commerce - Embalagem 2ª	Envoltório papel manteiga	Visual
+EXPERIÊNCIA	E-commerce - Embalagem 2ª	Caixa kraft individual	Visual
+EXPERIÊNCIA	E-commerce - Identificação	Etiqueta produto (nome/peso)	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Identificação	Etiqueta "Dry Aged X dias"	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Identificação	Selo "Desde 1880"	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Identificação	Adesivo lacre qualidade	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Informação	Card "Como preparar"	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Informação	Card "História do corte"	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Informação	Card "Conheça nosso restaurante"	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Informação	Folheto catálogo produtos	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Informação	QR code receitas	Visual
+EXPERIÊNCIA	E-commerce - Informação	QR code programa fidelidade	Visual
+EXPERIÊNCIA	E-commerce - Brinde	Adesivo decorativo	Visual
+EXPERIÊNCIA	E-commerce - Brinde	Imã de geladeira	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Brinde	Marcador de ponto da carne	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Nota fiscal	Cupom fiscal personalizado	Verbal + Visual
+EXPERIÊNCIA	E-commerce - Nota fiscal	Carta agradecimento assinada	Verbal + Visual
+PÓS-EXPERIÊNCIA	Google Maps	Resposta review positivo	Verbal
+PÓS-EXPERIÊNCIA	Google Maps	Resposta review negativo	Verbal
+PÓS-EXPERIÊNCIA	Google Maps	Resposta review neutro	Verbal
+PÓS-EXPERIÊNCIA	Instagram	Reshare UGC nos stories	Verbal + Visual
+PÓS-EXPERIÊNCIA	Instagram	Agradecimento menção	Verbal + Visual
+PÓS-EXPERIÊNCIA	Instagram	Post compilação clientes	Verbal + Visual
+PÓS-EXPERIÊNCIA	Email marketing	Newsletter mensal	Verbal + Visual
+PÓS-EXPERIÊNCIA	Email marketing	Email "Sentimos sua falta"	Verbal + Visual
+PÓS-EXPERIÊNCIA	Email marketing	Email aniversário cliente	Verbal + Visual
+PÓS-EXPERIÊNCIA	Email marketing	Email produtos novos	Verbal + Visual
+PÓS-EXPERIÊNCIA	Email marketing	Email receitas sazonais	Verbal + Visual
+PÓS-EXPERIÊNCIA	WhatsApp	Follow-up pós-visita restaurante	Verbal
+PÓS-EXPERIÊNCIA	WhatsApp	Follow-up pós-compra e-commerce	Verbal
+PÓS-EXPERIÊNCIA	WhatsApp	Pedido de review	Verbal
+PÓS-EXPERIÊNCIA	WhatsApp	Ofertas exclusivas recorrentes	Verbal
+PÓS-EXPERIÊNCIA	SMS	Lembrete promoção semanal	Verbal
+PÓS-EXPERIÊNCIA	Programa fidelidade	Cartão físico	Verbal + Visual
+PÓS-EXPERIÊNCIA	Programa fidelidade	App/digital wallet	Verbal + Visual
+PÓS-EXPERIÊNCIA	Programa fidelidade	Email boas-vindas programa	Verbal + Visual
+PÓS-EXPERIÊNCIA	Programa fidelidade	Email acúmulo de pontos	Verbal + Visual
+PÓS-EXPERIÊNCIA	Pesquisa satisfação	Formulário digital branded	Verbal + Visual
+PÓS-EXPERIÊNCIA	Pesquisa satisfação	Email resultados/agradecimento	Verbal + Visual`;
+
+        // Parse dos dados
+        function parseData() {
+            const lines = rawData.trim().split('\n').slice(1); // Remove header
+            const structure = {};
+            
+            lines.forEach(line => {
+                const parts = line.split('\t');
+                const stage = parts[0];
+                const channel = parts[1];
+                const asset = parts[2];
+                const identity = parts[3];
+                
+                // Normalizar identidade
+                let identityNorm = 'both';
+                if (identity.trim() === 'Visual') identityNorm = 'visual';
+                else if (identity.trim() === 'Verbal') identityNorm = 'verbal';
+                else if (identity.trim() === 'Verbal + Visual') identityNorm = 'both';
+                
+                if (!structure[stage]) {
+                    structure[stage] = {};
+                }
+                
+                if (!structure[stage][channel]) {
+                    structure[stage][channel] = [];
+                }
+                
+                structure[stage][channel].push({
+                    name: asset,
+                    identity: identityNorm
+                });
+            });
+            
+            return structure;
+        }
         
-        let filters = { stage: 'all', channel: 'all', identity: 'all' };
+        const data = parseData();
+        console.log('Dados carregados:', data);
+        console.log('Total de etapas:', Object.keys(data).length);
+        let filters = { stage: 'all', identity: 'all' };
+        
+        function handleFilterClick(e) {
+            const btn = e.target;
+            const filterType = btn.dataset.filter;
+            const value = btn.dataset.value;
+            
+            filters[filterType] = value;
+            
+            document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(b => {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            
+            render();
+        }
         
         function toggleTheme() {
-            // Placeholder for theme toggle - currently only dark mode
             alert('Theme toggle coming soon');
         }
         
         document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filterType = btn.dataset.filter;
-                const value = btn.dataset.value;
-                
-                filters[filterType] = value;
-                
-                document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(b => {
-                    b.classList.remove('active');
-                });
-                btn.classList.add('active');
-                
-                render();
-            });
+            btn.addEventListener('click', handleFilterClick);
         });
         
         function filterTouchpoint(tp) {
-            if (filters.channel !== 'all' && tp.channel !== filters.channel) return false;
             if (filters.identity !== 'all' && tp.identity !== filters.identity) return false;
             return true;
         }
@@ -3116,11 +729,31 @@
             });
             
             document.getElementById('totalCount').textContent = totalVisible;
+            updateStats();
+        }
+        
+        function updateStats() {
+            let visualCount = 0;
+            let verbalCount = 0;
+            let bothCount = 0;
+            
+            Object.keys(data).forEach(stage => {
+                Object.keys(data[stage]).forEach(channel => {
+                    data[stage][channel].forEach(tp => {
+                        if (tp.identity === 'visual') visualCount++;
+                        else if (tp.identity === 'verbal') verbalCount++;
+                        else if (tp.identity === 'both') bothCount++;
+                    });
+                });
+            });
+            
+            document.getElementById('stagesCount').textContent = Object.keys(data).length;
+            document.getElementById('digitalCount').textContent = visualCount;
+            document.getElementById('fisicoCount').textContent = verbalCount;
         }
         
         render();
     </script>
 
-
-
-</body></html>
+</body>
+</html>
