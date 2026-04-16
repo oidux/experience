@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/gabri/Downloads/index_17.html -->
+<!-- saved from url=(0046)file:///C:/Users/gabri/Downloads/index_20.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -322,6 +322,28 @@
                 padding: 24px;
             }
         }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -329,7 +351,7 @@
 
     <div class="logo-header">
         <div class="logo-wrapper" id="logoWrapper" style="transform: rotateX(0deg) rotateY(0deg); --shine-x: 50%; --shine-y: 50%;">
-            <img src="https://raw.githubusercontent.com/oidux/experience/refs/heads/main/debettilogo.png" alt="deBetti" class="main-logo">
+            <img src="./index_files/debettilogo.png" alt="deBetti" class="main-logo">
         </div>
     </div>
 
@@ -355,7 +377,7 @@
                 <h2 class="card-title">Pontos de Contato Identificados</h2>
             </div>
             <div class="card-body">
-                <a href="https://oidux.github.io/experience/plano.html" class="card-cta">
+                <a href="https://oidux.github.io/experience/plano.html" target="_blank" rel="noopener noreferrer" class="card-cta">
                     Ver Pontos de Contato
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -370,7 +392,7 @@
                 <h2 class="card-title">Planejamento de Implementação</h2>
             </div>
             <div class="card-body">
-                <a href="https://oidux.github.io/experience/pontos.html" class="card-cta">
+                <a href="https://oidux.github.io/experience/pontos.html" target="_blank" rel="noopener noreferrer" class="card-cta">
                     Ver Plano
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -379,6 +401,10 @@
             </div>
         </article>
     </section>
+
+    <footer class="footer">
+        © 2026 made by <a href="https://instagram.com/gabriel.watch" target="_blank" rel="noopener noreferrer">@gabriel.watch</a> | Todos os direitos reservados
+    </footer>
 
     <script>
         const logoWrapper = document.getElementById('logoWrapper');
